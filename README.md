@@ -12,61 +12,61 @@
 ### 1. Install and use Ambient Wanderer back-end using Docker
 
 - Requirements : 
-        - **Docker** version 18.09 (or newer).
-        - **Docker-compose** version 1.17 (or newer).
-        - Get **Gowalla** Dataset:
-            - NLE VPN connection is required.
-            - Use any SFTP client to access:  **wood.int.europe.naverlabs.com**.
-            - Data is located on **/gfs/project/likemind/gwalla**. 
-            - Load data to your local (download folder path) using the SFTP client. 
-            - Or (you can use secure copy over ssh connection on wood server to clone data).
-            
-    - Cloning project:
-        - VPN connection & https://oss.navercorp.com/situational-recommender/ authentication are required:
-        - Cloning the project: 
-            ```
-            git clone https://oss.navercorp.com/situational-recommender/LikeMind.git
-            cd LikeMind
-            ```
-     
-    - Change environment path DATA_PATH in .env file:
-        - .env file is located in LikeMind root path:
-        - Edit file and Change DATA_PATH to your local data path (download folder path).
-        - To edit .env file on Unix based OS (Linux, Mac OS) use:
-            ```
-            nano .env
-            ```
-        - On windows: 
-            - show hidden files and edit .env file on any text editor.
-            - Change DATA_PATH to your local data path (download folder path).
-            - In a CMD windows: **SET COMPOSE_CONVERT_WINDOWS_PATHS=1**
-            - Restart docker-engine.
-    
-    - Build services & install dependencies:
+    - **Docker** version 18.09 (or newer).
+    - **Docker-compose** version 1.17 (or newer).
+    - Get **Gowalla** Dataset:
+        - NLE VPN connection is required.
+        - Use any SFTP client to access:  **wood.int.europe.naverlabs.com**.
+        - Data is located on **/gfs/project/likemind/gwalla**. 
+        - Load data to your local (download folder path) using the SFTP client. 
+        - Or (you can use secure copy over ssh connection on wood server to clone data).
+
+- Cloning project:
+    - VPN connection & https://oss.navercorp.com/situational-recommender/ authentication are required:
+    - Cloning the project: 
         ```
-        docker-compose build && docker-compose up -d
+        git clone https://oss.navercorp.com/situational-recommender/LikeMind.git
+        cd LikeMind
         ```
-    - Wait until data populating is done. and server is running on localhost.
-        -  Maybe you might see a warning on the hint on “max_wal_size”, because the operation is exceptionally huge (uploading 1.5 GB of check-ins to postgres container). 
-        -  To avoid this warning and make a Database Populating more efficient. We can use some techniques there are suggestions on postgres documentation:
-        https://www.postgresql.org/docs/current/populate.html
-    
-        - you can see postgres service logs by running :
-    
-            ```
-            docker-compose logs -f postgresdb
-            ```
-        - After Data populating process is ended, the database is ready to use: 
-        
-          ![ERM](docs/pgsql_logs.png)
-        
-        - you can see api service logs by running :
-            ```
-            docker-compose logs -f api
-            ```
-        - After Data populating process is ended, the flask server is successfully running: 
-        
-          ![ERM](docs/api_logs.png)
+
+- Change environment path DATA_PATH in .env file:
+    - .env file is located in LikeMind root path:
+    - Edit file and Change DATA_PATH to your local data path (download folder path).
+    - To edit .env file on Unix based OS (Linux, Mac OS) use:
+        ```
+        nano .env
+        ```
+    - On windows: 
+        - show hidden files and edit .env file on any text editor.
+        - Change DATA_PATH to your local data path (download folder path).
+        - In a CMD windows: **SET COMPOSE_CONVERT_WINDOWS_PATHS=1**
+        - Restart docker-engine.
+
+- Build services & install dependencies:
+    ```
+    docker-compose build && docker-compose up -d
+    ```
+- Wait until data populating is done. and server is running on localhost.
+    -  Maybe you might see a warning on the hint on “max_wal_size”, because the operation is exceptionally huge (uploading 1.5 GB of check-ins to postgres container). 
+    -  To avoid this warning and make a Database Populating more efficient. We can use some techniques there are suggestions on postgres documentation:
+    https://www.postgresql.org/docs/current/populate.html
+
+    - you can see postgres service logs by running :
+
+        ```
+        docker-compose logs -f postgresdb
+        ```
+    - After Data populating process is ended, the database is ready to use: 
+
+      ![ERM](docs/pgsql_logs.png)
+
+    - you can see api service logs by running :
+        ```
+        docker-compose logs -f api
+        ```
+    - After Data populating process is ended, the flask server is successfully running: 
+
+      ![ERM](docs/api_logs.png)
 ---
 
 ### 2. PACE scenario
