@@ -4,9 +4,9 @@
   
    1- [Install AW back-end using Docker](#1-install-and-use-ambient-wanderer-back-end-using-docker)
    
-   2- [PACE scenario](#2-pace-scenario)
+   2- [Running PACE scenario](#2-pace-scenario)
    
-   3- [GeoMF scenario](#3-geomf-scenario)
+   3- [Running GeoMF scenario](#3-geomf-scenario)
            
 
 ### 1. Install and use Ambient Wanderer back-end using Docker
