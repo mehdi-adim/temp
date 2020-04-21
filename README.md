@@ -2,11 +2,11 @@
     
    The installation and usage guide contains for moment three part:
   
-   [Install and use Ambient Wanderer back-end using Docker](#1-install-and-use-ambient-wanderer-back-end-using-docker)
+   1- [Install and use Ambient Wanderer back-end using Docker](#1-install-and-use-ambient-wanderer-back-end-using-docker)
    
-   [PACE scenario](#2-pace-scenario)
+   2- [PACE scenario](#2-pace-scenario)
    
-   [GeoMF scenario](#3-geomf-scenario)
+   3- [GeoMF scenario](#3-geomf-scenario)
            
 
 ### 1. Install and use Ambient Wanderer back-end using Docker
@@ -149,7 +149,7 @@
         
         - Run:
         
-            The user 28 checked-in locations related to these categories : 
+            The user 28 checked-in locations related to these categories: 
             
             'Dive Bar', 'Fountain', 'Historical Landmark'. related to entertainment and discovering
             
@@ -165,8 +165,9 @@
 
    - Get prediction throw API:
    
-          The user 28 checked-in locations related to entertainment and discovering: 
-          'Dive Bar', 'Fountain', 'Historical Landmark'.  
+        The user 28 checked-in locations related to entertainment and discovering: 
+        'Dive Bar', 'Fountain', 'Historical Landmark'.  
+        
         - Request to /recommend_geoMF:
         
             ![ERM](docs/geomf_input.png)
