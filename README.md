@@ -129,15 +129,15 @@
 ---
 ### 3. GeoMF scenario
 
-    - When services are up, you can run GeoMF predictions by:
-    
+   - When services are up, you can run GeoMF predictions by:
+
         ```
         docker exec -it <CONTAINER_ID> python geoMF/core/make_predictions.py <ID_USER> <K>
         ```
         - CONTAINER_ID is the id of API container.
-    
+
         - K : is the number of Top-k pois 
-    
+
     
    - Example :
         ```
