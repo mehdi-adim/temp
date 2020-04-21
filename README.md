@@ -1,8 +1,8 @@
-# Ambient Wanderer back-end's installation.
+# Ambient Wanderer back-end's.
     
    The installation and usage guide contains for moment three part:
   
-   1- [Install and use Ambient Wanderer back-end using Docker](#1-install-and-use-ambient-wanderer-back-end-using-docker)
+   1- [Install AW back-end using Docker](#1-install-and-use-ambient-wanderer-back-end-using-docker)
    
    2- [PACE scenario](#2-pace-scenario)
    
