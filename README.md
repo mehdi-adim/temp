@@ -1,18 +1,17 @@
-## Ambient Wanderer back-end's installation.
+# Ambient Wanderer back-end's installation.
     
    The installation and usage guide contains for moment three part:
   
-   [Install and use Ambient Wanderer back-end using Docker](#install-and-use-ambient-wanderer-back-end-using-docker)
+   [Install and use Ambient Wanderer back-end using Docker](#1-install-and-use-ambient-wanderer-back-end-using-docker)
    
-   [PACE scenario](#pace-scenario)
+   [PACE scenario](#2-pace-scenario)
    
-   [GeoMF scenario](#geomf-scenario)
-        
-   [here](#place-2)    
+   [GeoMF scenario](#3-geomf-scenario)
+           
 
-1. **Install and use Ambient Wanderer back-end using Docker**
+### 1. Install and use Ambient Wanderer back-end using Docker
 
-    - Requirements : 
+- Requirements : 
         - **Docker** version 18.09 (or newer).
         - **Docker-compose** version 1.17 (or newer).
         - Get **Gowalla** Dataset:
@@ -70,7 +69,7 @@
           ![ERM](docs/api_logs.png)
 ---
 
-2. **PACE scenario**
+### 2. PACE scenario
     
    - When services are up, you can run PACE predictions by:
     
@@ -128,7 +127,7 @@
             ![ERM](docs/pace_output_api.png)
 
 ---
-3. **GeoMF scenario**
+### 3. GeoMF scenario
 
     - When services are up, you can run GeoMF predictions by:
     
@@ -178,5 +177,3 @@
             
             ![ERM](docs/geoMf_output.png)
 
-
-# place 2
