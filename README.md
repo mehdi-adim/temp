@@ -1,8 +1,14 @@
 ## Ambient Wanderer back-end's installation.
-
-[create an anchor](#some-markdown-heading)
-[here](#install-and-use-ambient-wanderer-back-end-using-docker)
-[here](#place-2)
+    
+   The installation and usage guide contains for moment three part:
+  
+   [Install and use Ambient Wanderer back-end using Docker](#install-and-use-ambient-wanderer-back-end-using-docker)
+   
+   [PACE scenario](#pace-scenario)
+   
+   [GeoMF scenario](#geomf-scenario)
+        
+        
 
 1. **Install and use Ambient Wanderer back-end using Docker**
 
@@ -64,7 +70,7 @@
           ![ERM](docs/api_logs.png)
 ---
 
-2. **PACE scenario:**
+2. **PACE scenario**
     
    - When services are up, you can run PACE predictions by:
     
@@ -172,7 +178,3 @@
             
             ![ERM](docs/geoMf_output.png)
 
-
-
-
-## place 2
