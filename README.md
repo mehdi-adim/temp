@@ -2,14 +2,18 @@
     
    The installation and usage guide contains for moment three part:
   
-   1- [Install AW back-end using Docker](#1-install-and-use-ambient-wanderer-back-end-using-docker)
+   1- [Install AW back-end using Docker](#1-install-and-use-ambient-wanderer-back-end-using-docker).
    
-   2- [Running PACE scenario](#2-pace-scenario)
+   2- [Running PACE scenario](#2-pace-scenario) : two ways to get recommendation (using CLI or API).
+            
+   3- [Running GeoMF scenario](#3-geomf-scenario) : two ways to get recommendation (using CLI or API).
    
-   3- [Running GeoMF scenario](#3-geomf-scenario)
+   4- [AW API Documentation](#4-aw-api-documentation).
+   
+   5- [Design and Architecture](#5-design-and-architecture).
            
-
-### 1. Install and use Ambient Wanderer back-end using Docker
+---
+### 1. Install and use Ambient Wanderer back-end using Docker.
 
 - Requirements : 
     - **Docker** version 18.09 (or newer).
@@ -178,3 +182,56 @@
             
             ![ERM](docs/geoMf_output.png)
 
+---
+
+### 4. AW API Documentation
+   -  API Documentation
+    
+      We used postman to publish documentation, is available at the [link](https://documenter.getpostman.com/view/10475669/SzKWuHcQ?version=latest).
+
+   -  Using API      
+        - Recommendation endpoint: Sending HTTP request through curl client (Ask for recommendation).
+            ```
+            curl --location --request GET 'http://0.0.0.0:5000/recommend' \
+            --header 'Content-Type: application/json' \
+            --header 'Content-Type: application/json' \
+            --data-raw '{
+                "radius": 50,
+                "context_location": {
+                    "lat": 48.860755,
+                    "lng": 2.352266
+                },
+                "user_mindset": 5,
+                "user_local_time": "2018-06-29 12:21:41"
+            }'
+            ```
+        - Bookmarking endpoint: Sending HTTP request through curl client (Bookmarking POI).
+            ```
+            curl --location --request POST 'http://10.57.19.62:5010/bookmark' \
+            --header 'Content-Type: application/json' \
+            --header 'Content-Type: application/json' \
+            --data-raw '{
+            "user_id": 71878,
+            "poi_id": 11550
+            }'
+            ```
+        - Recommendation request through API client (Postman) 
+
+            ![ERM](docs/postman_example.png)
+ 
+ ---
+ ### 5. Design and Architecture
+
+   - Data Modeling: UML Entity relationship model. 
+
+        ![ERM](docs/ERD.jpg)
+
+   - Software design architecture
+        
+        - Zoom on LikeMind
+        
+            ![Zoom on LikeMind](docs/Architecture.png)
+            
+        - Zoom on PACE 
+        
+            ![Zoom on PACE](docs/GeoMF_Architecture.png)
