@@ -16,6 +16,8 @@
      
    4- [AW API Documentation](#4-aw-api-documentation).
    
+   - [Switch between Foursquare and Gowalla throw API](#switch-between-foursquare-and-gowalla-throw-api).
+   
    5- [Design and Architecture](#5-design-and-architecture).
            
 ---
@@ -268,7 +270,20 @@
         - Recommendation request through API client (Postman) 
 
             ![ERM](docs/postman_example.png)
- 
+            
+   #### Switch between Foursquare and Gowalla throw API
+   
+   To switch to Foursquare Dataset:
+   
+   ```
+   curl --request POST 0.0.0.0:5000/switch/foursquare
+   ```
+   To switch to Foursquare Dataset:
+   
+   ```
+   curl --request POST 0.0.0.0:5000/switch/gowalla
+   ```
+   
  ---
  ### 5. Design and Architecture
 
