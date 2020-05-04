@@ -4,15 +4,15 @@
    
    2- [Running PACE scenario](#2-pace-scenario) : two ways to get recommendation (using CLI or API).
    
-    - [Pace scenrio using Gowalla Dataset](#1-pace-scenrio-using-gowalla-dataset)
+   - [Pace scenrio using Gowalla Dataset](#1-pace-scenrio-using-gowalla-dataset)
         
-    - [Pace scenario using Foursquare Dataset](#2-pace-scenario-using-foursquare-dataset)
+   - [Pace scenario using Foursquare Dataset](#2-pace-scenario-using-foursquare-dataset)
             
    3- [Running GeoMF scenario](#3-geomf-scenario) : two ways to get recommendation (using CLI or API).
       
-    - [GeoMF scenario using Gowalla Dataset](#1-geomf-scenario-using-gowalla-dataset)
+   - [GeoMF scenario using Gowalla Dataset](#1-geomf-scenario-using-gowalla-dataset)
     
-    - [GeoMF scenario using Foursquare Dataset](#2-geomf-scenario-using-foursquare-dataset)
+   - [GeoMF scenario using Foursquare Dataset](#2-geomf-scenario-using-foursquare-dataset)
      
    4- [AW API Documentation](#4-aw-api-documentation).
    
