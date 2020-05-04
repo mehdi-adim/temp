@@ -4,7 +4,7 @@
    
    2- [Running PACE scenario](#2-pace-scenario) : two ways to get recommendation (using CLI or API).
    
-   [Example using Gowalla Dataset](#-example-using-gowalla-dataset)
+   [Example using Gowalla Dataset](#1-example-using-gowalla-dataset)
         
    [Example using Gowalla Dataset](#example-using-gowalla-dataset)
             
@@ -92,7 +92,7 @@
         
         - database : gowalla or foursquare
     
-        #### - Example using Gowalla Dataset
+        #### 1. Example using Gowalla Dataset
         ```
         docker container ls
         ```
