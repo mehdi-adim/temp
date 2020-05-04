@@ -4,12 +4,16 @@
    
    2- [Running PACE scenario](#2-pace-scenario) : two ways to get recommendation (using CLI or API).
    
-   [Example using Gowalla Dataset](#1-example-using-gowalla-dataset)
+    - [Pace scenrio using Gowalla Dataset](#1-pace-scenrio-using-gowalla-dataset)
         
-   [Example using Gowalla Dataset](#example-using-gowalla-dataset)
+    - [Pace scenario using Foursquare Dataset](#2-pace-scenario-using-foursquare-dataset)
             
    3- [Running GeoMF scenario](#3-geomf-scenario) : two ways to get recommendation (using CLI or API).
-   
+      
+    - [GeoMF scenario using Gowalla Dataset](#1-geomf-scenario-using-gowalla-dataset)
+    
+    - [GeoMF scenario using Foursquare Dataset](#2-geomf-scenario-using-foursquare-dataset)
+     
    4- [AW API Documentation](#4-aw-api-documentation).
    
    5- [Design and Architecture](#5-design-and-architecture).
@@ -92,7 +96,7 @@
         
         - database : gowalla or foursquare
     
-        #### 1. Example using Gowalla Dataset
+        #### 1. Pace scenrio using Gowalla Dataset
         ```
         docker container ls
         ```
@@ -114,7 +118,7 @@
           
             ![ERM](docs/pace_output_cli.png)
             
-        #### - Example using Foursquare Dataset :
+        #### 2. Pace scenario using Foursquare Dataset
         
         - Run:
             
@@ -158,14 +162,16 @@
    - When services are up, you can run GeoMF predictions by:
 
         ```
-        docker exec -it <CONTAINER_ID> python geoMF/core/make_predictions.py <ID_USER> <K>
+        docker exec -it <CONTAINER_ID> python geoMF/core/make_predictions.py <ID_USER> <K> <database>
         ```
         - CONTAINER_ID is the id of API container.
 
         - K : is the number of Top-k pois 
+        
+        - database : foursquare or gowalla
 
     
-        #### - Example using gowalla:
+        #### 1. GeoMF scenario using Gowalla Dataset
         ```
         docker container ls
         ```
@@ -188,7 +194,7 @@
             
             ![ERM](docs/geomf_output_cli.png)
             
-       #### - Example using foursquare:
+       #### 2. GeoMF scenario using Foursquare Dataset
         
         - Run:
         
