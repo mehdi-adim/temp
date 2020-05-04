@@ -1,10 +1,12 @@
 # Ambient Wanderer back-end's.
-    
-   The installation and usage guide contains for moment three part:
   
    1- [Install AW back-end using Docker](#1-install-and-use-ambient-wanderer-back-end-using-docker).
    
    2- [Running PACE scenario](#2-pace-scenario) : two ways to get recommendation (using CLI or API).
+   
+   [Example using Gowalla Dataset](#example-using-gowalla-dataset)
+        
+   [Example using Gowalla Dataset](#example-using-gowalla-dataset)
             
    3- [Running GeoMF scenario](#3-geomf-scenario) : two ways to get recommendation (using CLI or API).
    
@@ -18,12 +20,15 @@
 - Requirements : 
     - **Docker** version 18.09 (or newer).
     - **Docker-compose** version 1.17 (or newer).
+    - NLE VPN connection is required.
+    - Use any SFTP client to access:  **wood.int.europe.naverlabs.com**.
     - Get **Gowalla** Dataset:
-        - NLE VPN connection is required.
-        - Use any SFTP client to access:  **wood.int.europe.naverlabs.com**.
         - Data is located on **/gfs/project/likemind/gwalla**. 
         - Load data to your local (download folder path) using the SFTP client. 
         - Or (you can use secure copy over ssh connection on wood server to clone data).
+    - Get **Foursquare** Dataset:
+        - Data is located on **/gfs/project/likemind/foursquare**. 
+        - Load data to your local (download folder path) using the SFTP client. 
 
 - Cloning project:
     - VPN connection & https://oss.navercorp.com/situational-recommender/ authentication are required:
@@ -58,7 +63,8 @@
     - you can see postgres service logs by running :
 
         ```
-        docker-compose logs -f postgresdb
+        docker-compose logs -f gowalla
+        docker-compose logs -f foursquare
         ```
     - After Data populating process is ended, the database is ready to use: 
 
@@ -78,14 +84,15 @@
    - When services are up, you can run PACE predictions by:
     
         ```
-        docker exec -it <CONTAINER_ID> python pace/core/make_predictions.py <ID_USER> <K>
+        docker exec -it <CONTAINER_ID> python pace/core/make_predictions.py <ID_USER> <K> <database>
         ```
         - CONTAINER_ID is the id of API container.
     
         - K : is the number of Top-k pois 
+        
+        - database : gowalla or foursquare
     
-    
-   - Example :
+        #### - Example using Gowalla Dataset
         ```
         docker container ls
         ```
@@ -94,14 +101,29 @@
           ![ERM](docs/container_id.png)
         
         - Run:
-            - The user 12062 checked-in locations related to foody person 
+            - The user 12062 checked-in locations related to foodie person 
             
             - we make a prediction using PACE : with user 12062 and 7 as top-7 pois to recommend.
             
-            ```
-            docker exec -it 5f11c4d6e111 python pace/core/make_predictions.py 12062 7
+            ```com
+            docker exec -it 5f11c4d6e111 python pace/core/make_predictions.py 12062 7 gowalla
             ```
        - You get:
+       
+          The probability score is the relevance probability between user and poi.
+          
+            ![ERM](docs/pace_output_cli.png)
+            
+        #### - Example using Foursquare Dataset :
+        
+        - Run:
+            
+            - we make a prediction using PACE : with user 22207 and 7 as top-7 pois to recommend.
+            
+            ```com
+            docker exec -it 5f11c4d6e111 python pace/core/make_predictions.py 22207 7 foursquare
+            ```
+        - You get:
        
           The probability score is the relevance probability between user and poi.
           
@@ -115,7 +137,7 @@
             ```
         - Overwrite and Train again:
             ```
-            docker exec -it 5f11c4d6e111 python pace/core/model.py
+            docker exec -it 5f11c4d6e111 python pace/core/model.py <database>
             ```
    - Get prediction throw API:
         - The user 12062 checked-in locations related to foody person
@@ -143,7 +165,7 @@
         - K : is the number of Top-k pois 
 
     
-   - Example :
+        #### - Example using gowalla:
         ```
         docker container ls
         ```
@@ -160,7 +182,24 @@
             - we make a prediction using GeoMF : with user 28 and 5 as top-5 pois to propose.
             
             ```
-            docker exec -it 5f11c4d6e111 python geoMF/core/make_predictions.py 28 5
+            docker exec -it 5f11c4d6e111 python geoMF/core/make_predictions.py 28 5 gowalla
+            ```
+       - You get:
+            
+            ![ERM](docs/geomf_output_cli.png)
+            
+       #### - Example using foursquare:
+        
+        - Run:
+        
+            The user 28 checked-in locations related to these categories: 
+            
+            'Plaza', 'Soccer Field', 'cafe', 'Pizza Place' related to entertainment
+            
+            - we make a prediction using GeoMF : with user 28 and 5 as top-5 pois to propose.
+            
+            ```
+            docker exec -it 5f11c4d6e111 python geoMF/core/make_predictions.py 28 5 foursquare
             ```
        - You get:
             
