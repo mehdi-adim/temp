@@ -4,7 +4,7 @@
    
    2- [Running PACE scenario](#2-pace-scenario) : two ways to get recommendation (using CLI or API).
    
-   [Example using Gowalla Dataset](#example-using-gowalla-dataset)
+   [Example using Gowalla Dataset](#-example-using-gowalla-dataset)
         
    [Example using Gowalla Dataset](#example-using-gowalla-dataset)
             
