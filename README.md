@@ -42,16 +42,17 @@
         cd LikeMind
         ```
 
-- Change environment path DATA_PATH in .env file:
+- Change environment path GOWALLA_PATH and FOURSQUARE_PATH in .env file:
     - .env file is located in LikeMind root path:
-    - Edit file and Change DATA_PATH to your local data path (download folder path).
+    - Edit file and Change GOWALLA_PATH and FOURSQUARE_PATH to your local data paths (for foursquare and gowalla).
     - To edit .env file on Unix based OS (Linux, Mac OS) use:
         ```
         nano .env
         ```
     - On windows: 
         - show hidden files and edit .env file on any text editor.
-        - Change DATA_PATH to your local data path (download folder path).
+        - Change GOWALLA_PATH to your local data path (download folder path for gowalla).
+        - Change FOURSQUARE_PATH to your local data path (download folder path for foursquare).
         - In a CMD windows: **SET COMPOSE_CONVERT_WINDOWS_PATHS=1**
         - Restart docker-engine.
 
@@ -118,7 +119,7 @@
           
             ![ERM](docs/pace_output_cli.png)
             
-        #### 2. Pace scenario using Foursquare Dataset
+       #### 2. Pace scenario using Foursquare Dataset
         
         - Run:
             
@@ -131,7 +132,7 @@
        
           The probability score is the relevance probability between user and poi.
           
-            ![ERM](docs/pace_output_cli.png)
+            ![ERM](docs/cli_output_pace_foursquare.png).
             
    - Changing pace config and re-train the model:
         - Edit pace/core/pace_config.py
@@ -171,45 +172,49 @@
         - database : foursquare or gowalla
 
     
-        #### 1. GeoMF scenario using Gowalla Dataset
+   #### 1. GeoMF scenario using Gowalla Dataset
+
+   ```
+    docker container ls
+   ```
+    
+   - List containers :
+    
+      ![ERM](docs/container_id.png)
+    
+   - Run:
+
+   The user 28 checked-in locations related to these categories: 
+    
+   'Dive Bar', 'Fountain', 'Historical Landmark'. related to entertainment and discovering
+    
+   - we make a prediction using GeoMF : with user 28 and 5 as top-5 pois to propose.
+    
+   ```
+    docker exec -it 5f11c4d6e111 python geoMF/core/make_predictions.py 28 5 gowalla
+   ```
+
+   - You get:
+
+       ![ERM](docs/geomf_output_cli.png)
+            
+   #### 2. GeoMF scenario using Foursquare Dataset
+        
+   - Run:
+    
+        The user 28 checked-in locations related to these categories: 
+        
+        'Plaza', 'Soccer Field', 'cafe', 'Pizza Place' related to entertainment
+        
+        - we make a prediction using GeoMF : with user 28 and 5 as top-5 pois to propose.
+        
         ```
-        docker container ls
+        docker exec -it 5f11c4d6e111 python geoMF/core/make_predictions.py 28 5 foursquare
         ```
-        - List containers :
-        
-          ![ERM](docs/container_id.png)
-        
-        - Run:
-        
-            The user 28 checked-in locations related to these categories: 
+   
+   - You get:
             
-            'Dive Bar', 'Fountain', 'Historical Landmark'. related to entertainment and discovering
-            
-            - we make a prediction using GeoMF : with user 28 and 5 as top-5 pois to propose.
-            
-            ```
-            docker exec -it 5f11c4d6e111 python geoMF/core/make_predictions.py 28 5 gowalla
-            ```
-       - You get:
-            
-            ![ERM](docs/geomf_output_cli.png)
-            
-       #### 2. GeoMF scenario using Foursquare Dataset
-        
-        - Run:
-        
-            The user 28 checked-in locations related to these categories: 
-            
-            'Plaza', 'Soccer Field', 'cafe', 'Pizza Place' related to entertainment
-            
-            - we make a prediction using GeoMF : with user 28 and 5 as top-5 pois to propose.
-            
-            ```
-            docker exec -it 5f11c4d6e111 python geoMF/core/make_predictions.py 28 5 foursquare
-            ```
-       - You get:
-            
-            ![ERM](docs/geomf_output_cli.png)
+     ![ERM](docs/geo_output_cli_foursquare.png)
             
 
    - Get prediction throw API:
